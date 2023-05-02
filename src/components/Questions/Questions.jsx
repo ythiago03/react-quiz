@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { QuizContext } from '../../context/quiz';
+import { Options } from '../Options/Options';
+
 import './Questions.css'
 
 const Questions = () => {
@@ -11,13 +13,17 @@ const Questions = () => {
       <p>Pergunta {quizState.currentQuestion + 1} de {quizState.questions.length}</p>
       <h2>{currentQuestion.question}</h2>
       <div id="options-container">
-        <p>{currentQuestion.options}</p>
+        <p>{currentQuestion.options.map((option) => (
+            <Options option={option} key={option} answer={currentQuestion.answer}/>
+          ))}</p>
       </div>  
+
+      {quizState.answerSelected && (
       <button 
       onClick={() => dispatch({type: 'CHANGE_QUESTION',})}
       >
         Continuar
-      </button>
+      </button>) }
     </div>
   )
 }
