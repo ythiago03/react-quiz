@@ -10,7 +10,6 @@ const initialState = {
     answerSelected: false,
 }
 const quizReducer = (state, action) => {
-    console.log(state, action);
 
     switch(action.type){
         case "CHANGE_STATE":
@@ -47,6 +46,11 @@ const quizReducer = (state, action) => {
 
         case "NEW_GAME":
             return initialState;
+        break;
+
+
+        case "CHECK_ANSWER":
+            console.log(action);
         break;
 
         default:
